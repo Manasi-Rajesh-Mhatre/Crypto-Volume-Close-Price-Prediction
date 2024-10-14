@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoCurrency Volume Predictor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Crypto Volume Predictor</h1>
+      <form action="/predict" method="post">
+        <label for="open">Open</label>
+        <input type="text" name="Open" id="open" placeholder="Enter opening price" required />
+
+        <label for="high">High</label>
+        <input type="text" name="High" id="high" placeholder="Enter highest price" required />
+
+        <label for="low">Low</label>
+        <input type="text" name="Low" id="low" placeholder="Enter lowest price" required />
+
+        <label for="close">Close</label>
+        <input type="text" name="Close" id="close" placeholder="Enter closing price" required />
+
+        <label for="adj_close">Adj Close</label>
+        <input type="text" name="Adj Close" id="adj_close" placeholder="Enter adjusted close price" required />
+
+        <label for="type" class="crypto-label">
+          <span>Crypto Type</span>
+        </label>
+        <input type="text" name="Type" id="type" placeholder="1: BTC, 2: DOGE, 3: ETH, 4: ADA" required />
+
+        <button type="submit">Predict Volume</button>
+      </form>
+
+      <div class="result">
+        <p>{{pred}}</p>
+      </div>
+      <div class="note">
+        <p>*Enter the crypto data to predict the trading volume.</p>
+      </div>
+    </div>
+  </body>
+</html>
