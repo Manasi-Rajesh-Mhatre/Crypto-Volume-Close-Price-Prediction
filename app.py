@@ -4,7 +4,7 @@ import numpy as np
 
 app = Flask(__name__) 
 
-model = joblib.load("RandomForestRegressor.joblib")
+model = joblib.load("xgboost.joblib")
 model2 = joblib.load("RandomForestRegressorCP.joblib")
 
 @app.route('/')

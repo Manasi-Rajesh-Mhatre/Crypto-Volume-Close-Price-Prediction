@@ -79,10 +79,10 @@
             tabs.forEach(tab => tab.classList.remove('active'));
             forms.forEach(form => {
                 form.classList.remove('active');
-                form.style.display = 'none'; // Ensure forms are hidden
+                form.style.display = 'none';
             });
 
-            // Set active tab and form based on tabName
+    
             if (tabName === 'volume') {
                 document.querySelector('.tab:nth-child(1)').classList.add('active');
                 document.getElementById('volume').style.display = 'block';
