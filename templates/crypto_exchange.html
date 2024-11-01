@@ -1,44 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CryptoCurrency Volume Predictor</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <h1>Crypto Volume Predictor</h1>
-      <form action="/predict" method="post">
-        <label for="open">Open</label>
-        <input type="text" name="Open" id="open" placeholder="Enter opening price" required />
+        <div class="tabs">
+            <div class="tab {% if active_tab == 'volume' %}active{% endif %}" onclick="showTab('volume')">Volume Predictor</div>
+            <div class="tab {% if active_tab == 'closePrice' %}active{% endif %}" onclick="showTab('closePrice')">Close Price Predictor</div>
+        </div>
 
-        <label for="high">High</label>
-        <input type="text" name="High" id="high" placeholder="Enter highest price" required />
+        <form id="volume" class="{% if active_tab == 'volume' %}active{% else %}hidden{% endif %}" action="/predict" method="post">
+            <h1>Crypto Volume Predictor</h1>
+            <label for="open">Open</label>
+            <input type="number" name="Open" id="open" placeholder="Enter opening price" value="{{ open_value }}" required />
 
-        <label for="low">Low</label>
-        <input type="text" name="Low" id="low" placeholder="Enter lowest price" required />
+            <label for="high">High</label>
+            <input type="number" name="High" id="high" placeholder="Enter highest price" value="{{ high_value }}" required />
 
-        <label for="close">Close</label>
-        <input type="text" name="Close" id="close" placeholder="Enter closing price" required />
+            <label for="low">Low</label>
+            <input type="number" name="Low" id="low" placeholder="Enter lowest price" value="{{ low_value }}" required />
 
-        <label for="adj_close">Adj Close</label>
-        <input type="text" name="Adj Close" id="adj_close" placeholder="Enter adjusted close price" required />
+            <label for="close">Close</label>
+            <input type="number" name="Close" id="close" placeholder="Enter closing price" value="{{ close_value }}" required />
 
-        <label for="type" class="crypto-label">
-          <span>Crypto Type</span>
-        </label>
-        <input type="text" name="Type" id="type" placeholder="1: BTC, 2: DOGE, 3: ETH, 4: ADA" required />
+            <label for="adj_close">Adj Close</label>
+            <input type="number" name="Adj Close" id="adj_close" placeholder="Enter adjusted close price" value="{{ adj_close_value }}" required />
 
-        <button type="submit">Predict Volume</button>
-      </form>
+            <label for="type" class="crypto-label">
+                <span>Crypto Type</span>
+            </label>
+            <input type="number" min="1" max="4" step="1" name="Type" id="type" placeholder="Enter 1: BTC, 2: DOGE, 3: ETH, 4: ADA" value="{{ type_value }}" required />
 
-      <div class="result">
-        <p>{{pred}}</p>
-      </div>
-      <div class="note">
-        <p>*Enter the crypto data to predict the trading volume.</p>
-      </div>
+            <button type="submit">Predict Volume</button>
+            <button type="reset" onclick="resetForm(event, 'volume')">Reset</button>
+        </form>
+
+        <form id="closePrice" class="{% if active_tab == 'closePrice' %}active{% else %}hidden{% endif %}" action="/predict2" method="post">
+            <h1>Crypto Close Price Predictor</h1>
+            <label for="open">Open</label>
+            <input type="number" name="Open" id="openClose" placeholder="Enter opening price" value="{{ open_value }}" required />
+
+            <label for="high">High</label>
+            <input type="number" name="High" id="highClose" placeholder="Enter highest price" value="{{ high_value }}" required />
+
+            <label for="low">Low</label>
+            <input type="number" name="Low" id="lowClose" placeholder="Enter lowest price" value="{{ low_value }}" required />
+
+            <label for="volume">Volume</label>
+            <input type="number" name="Volume" id="volumeClose" placeholder="Enter volume" value="{{ volume_value }}" required />
+
+            <label for="type" class="crypto-label">
+                <span>Crypto Type</span>
+            </label>
+            <input type="number" min="1" max="4" step="1" name="Type" id="typeClose" placeholder="Enter 1: BTC, 2: DOGE, 3: ETH, 4: ADA" value="{{ type_value }}" required />
+
+            <button type="submit">Predict Closing Price</button>
+            <button type="reset" onclick="resetForm(event, 'closePrice')">Reset</button>
+        </form>
+
+        <div class="result">
+            <p>{{pred}}</p>
+            <p>{{pred2}}</p>
+        </div>
+        <div class="note">
+            <p>*Enter the crypto data to predict the trading volume or closing price.</p>
+        </div>
     </div>
-  </body>
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const forms = document.querySelectorAll('form');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            forms.forEach(form => {
+                form.classList.remove('active');
+                form.style.display = 'none'; // Ensure forms are hidden
+            });
+
+            // Set active tab and form based on tabName
+            if (tabName === 'volume') {
+                document.querySelector('.tab:nth-child(1)').classList.add('active');
+                document.getElementById('volume').style.display = 'block';
+                document.getElementById('volume').classList.add('active');
+            } else if (tabName === 'closePrice') {
+                document.querySelector('.tab:nth-child(2)').classList.add('active');
+                document.getElementById('closePrice').style.display = 'block';
+                document.getElementById('closePrice').classList.add('active');
+            }
+        }
+
+        function resetForm(event, formId) {
+            event.preventDefault();
+            window.location.href = `/${formId}/reset`; 
+        }
+    </script>
+</body>
 </html>

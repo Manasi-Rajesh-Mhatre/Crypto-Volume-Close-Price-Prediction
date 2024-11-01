@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: auto;
   }
   
   .container {
@@ -15,12 +16,12 @@ body {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
-    text-align: center;
+    text-align: center; 
+    margin-block-start: auto;
   }
   
   h1 {
-    color: #f0b90b; /* Binance yellow */
+    color: #f0b90b; 
     margin-bottom: 20px;
   }
   
@@ -30,7 +31,7 @@ body {
     text-align: left;
   }
   
-  input[type="text"] {
+  input[type="number"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #333;
@@ -82,4 +83,46 @@ body {
     align-items: center;
     justify-content: space-between;
   }
+
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.tab.active {
+    background-color: #e1b309; 
+    border-bottom: 1px solid #e1b309;
+    color: black;
+}
+
+.tab:hover {
+    background-color: #fde283; 
+    color: black;
+}
+
+form {
+    display: none; 
+}
+
+form.active {
+    display: block;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.note {
+    font-size: 0.9em;
+    color: #ccc;
+}
   
