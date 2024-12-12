@@ -1,5 +1,3 @@
-# Crypto-Volume-Close-Price-Prediction
-
 # Crypto Volume and Close Price Predictor
 
 This web application predicts the **volume** and **close price** of popular cryptocurrencies such as **Bitcoin (BTC)**, **Dogecoin (DOGE)**, **Ethereum (ETH)**, and **Cardano (ADA)**. The app is built using **Flask** for the web framework and **Scikit-learn** for machine learning.
@@ -25,12 +23,15 @@ This web application predicts the **volume** and **close price** of popular cryp
    pip install -r requirements.txt
 
 3. Usage:
+   
   a. Run the Flask application:
   
     ```bash
     python app.py
 
   b. Open your web browser and navigate to:
-```bash     http://127.0.0.1:5000/
+  
+   ```bash
+   http://127.0.0.1:5000/
 
 
