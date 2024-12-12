@@ -16,19 +16,19 @@
         <form id="volume" class="{% if active_tab == 'volume' %}active{% else %}hidden{% endif %}" action="/predict" method="post">
             <h1>Crypto Volume Predictor</h1>
             <label for="open">Open</label>
-            <input type="number" name="Open" id="open" placeholder="Enter opening price" value="{{ open_value }}" required />
+            <input type="number" step="any" name="Open" id="open" placeholder="Enter opening price" value="{{ open_value }}" required />
 
             <label for="high">High</label>
-            <input type="number" name="High" id="high" placeholder="Enter highest price" value="{{ high_value }}" required />
+            <input type="number" step="any" name="High" id="high" placeholder="Enter highest price" value="{{ high_value }}" required />
 
             <label for="low">Low</label>
-            <input type="number" name="Low" id="low" placeholder="Enter lowest price" value="{{ low_value }}" required />
+            <input type="number" step="any" name="Low" id="low" placeholder="Enter lowest price" value="{{ low_value }}" required />
 
             <label for="close">Close</label>
-            <input type="number" name="Close" id="close" placeholder="Enter closing price" value="{{ close_value }}" required />
+            <input type="number" step="any" name="Close" id="close" placeholder="Enter closing price" value="{{ close_value }}" required />
 
             <label for="adj_close">Adj Close</label>
-            <input type="number" name="Adj Close" id="adj_close" placeholder="Enter adjusted close price" value="{{ adj_close_value }}" required />
+            <input type="number" step="any" name="Adj Close" id="adj_close" placeholder="Enter adjusted close price" value="{{ adj_close_value }}" required />
 
             <label for="type" class="crypto-label">
                 <span>Crypto Type</span>
@@ -42,16 +42,16 @@
         <form id="closePrice" class="{% if active_tab == 'closePrice' %}active{% else %}hidden{% endif %}" action="/predict2" method="post">
             <h1>Crypto Close Price Predictor</h1>
             <label for="open">Open</label>
-            <input type="number" name="Open" id="openClose" placeholder="Enter opening price" value="{{ open_value }}" required />
+            <input type="number" step="any" name="Open" id="openClose" placeholder="Enter opening price" value="{{ open_value }}" required />
 
             <label for="high">High</label>
-            <input type="number" name="High" id="highClose" placeholder="Enter highest price" value="{{ high_value }}" required />
+            <input type="number" step="any" name="High" id="highClose" placeholder="Enter highest price" value="{{ high_value }}" required />
 
             <label for="low">Low</label>
-            <input type="number" name="Low" id="lowClose" placeholder="Enter lowest price" value="{{ low_value }}" required />
+            <input type="number" step="any" name="Low" id="lowClose" placeholder="Enter lowest price" value="{{ low_value }}" required />
 
             <label for="volume">Volume</label>
-            <input type="number" name="Volume" id="volumeClose" placeholder="Enter volume" value="{{ volume_value }}" required />
+            <input type="number" step="any" name="Volume" id="volumeClose" placeholder="Enter volume" value="{{ volume_value }}" required />
 
             <label for="type" class="crypto-label">
                 <span>Crypto Type</span>
