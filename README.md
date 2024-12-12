@@ -24,12 +24,11 @@ This web application predicts the **volume** and **close price** of popular cryp
 
 3. Usage:
    
-  a. Run the Flask application:
+  i. Run the Flask application:
   
-    ```bash
     python app.py
 
-  b. Open your web browser and navigate to:
+  ii. Open your web browser and navigate to:
   
    ```bash
    http://127.0.0.1:5000/
